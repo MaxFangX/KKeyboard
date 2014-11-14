@@ -1,0 +1,31 @@
+<html>
+<head>
+  <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <link rel="stylesheet" type="text/css" href="C:\Users\LegalPRO\Desktop\Firebase.css">
+</head>
+<body background="background.png">
+<div style="margin-top:250px">
+  <p><font size="30" face="monospace" color="black">&#60;K - Keyboard&#62;</font></p>
+</div>
+<textarea style="margin-top:40px; width:480px; font-family: monospace; background-color:#eeeeee;" id="messageInput" rows="5" cols="70"></textarea>
+<script>
+
+  // Get a reference to the root of the chat data.
+  var messagesRef = new Firebase('https://sweltering-fire-3245.firebaseio.com/KB');
+
+  // When the user presses enter on the message input, write the message to firebase.
+
+  $('#messageInput').keypress(function (e) {
+    if (e.keyCode == 13) {
+
+      var text = $('#messageInput').val();
+      messagesRef.set(text);
+      $('#messageInput').val('');
+    }
+  });
+
+  
+</script>
+</body>
+</html>
